@@ -57,7 +57,7 @@ Infinity
 We can also declare functions that we can reuse, below is [Fizz Buzz](https://en.wikipedia.org/wiki/Fizz_buzz)
 
 ```javascript
-> var fizzBuzz = input => {
+> const fizzBuzz = input => {
   if (input % 15 === 0) return 'FizzBuzz';
    if (input % 3 === 0) return 'Fizz';
    if (input % 5 === 0) return 'Buzz';
@@ -284,3 +284,31 @@ Let's change the colour of our vehicle with the `_id` of `ObjectId("5d17d5ef55fa
         "colour" : "orange"
 }
 ```
+
+Perfect, now we've got an orange car!
+
+Feel free to make up some of your own updates to the documents.
+
+
+## Querying parkrun Data
+
+### Connect to the database
+
+We'll need to drop out the current shell and create a new session to a database hosted in [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). Atlas is a SaaS offering of MongoDB provided by MongoDB.
+
+To connect to the database run the following command but replace the `<username>` and `<password>` with the given details.
+
+```bash
+mongo "mongodb+srv://cluster0-dxyc7.mongodb.net/parkrun-map" --username <username> --password <password>
+```
+
+Once connected run the following to see the structure of the parkrun data:
+
+```javascript
+> db.parkruns.findOne();
+```
+
+Now use the data inside mongodb with the knowledge you've got so far to query the parkrun dataset to find answers to the following questions.
+
+### Questions
+
