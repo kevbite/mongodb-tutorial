@@ -312,3 +312,27 @@ Now use the data inside mongodb with the knowledge you've got so far to query th
 
 ### Questions
 
+1. What is the name of the parkrun with the `_id` of `ObjectId("5c2a324534656f06e4bd21c6")`?
+
+2. What is the location (lat/lon coordinates) of `Polokwane` parkrun in `South Africa`?
+
+3. What parkrun name starts with the letter `Ö`?
+
+4. Where outside of the UK has a parkrun with the name starting with `Vall`?
+
+5. Which 2 parkruns have had attendance of over 995?
+
+6. Which parkrun was cancelled due to a `Soap Box Race`?
+
+7. How many parkruns have showers that people can use?
+
+8. How many countries have parkruns?
+
+9. Which country has the most amount of parkruns?
+
+10. Which country has the least amount of parkruns?
+
+11. Which country has the fastest average seconds ran for the whole country?
+
+12. What is total events run for the whole of `Italy`?
+
