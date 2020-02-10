@@ -216,9 +216,9 @@ We'll pass in the an object with an `_id` set to our id to find:
 
 You may also want to create a separate variables in JavaScript that contain your query so you can use them again and again:
 ```javascript
-> var query = { _id: ObjectId("5d17d3d455fa784abd28f481") };
+> var query = { _id: ObjectId("5d17d5ef55fa784abd28f482") };
 > db.vehicles.find(query);
-{ "_id" : ObjectId("5d17d3d455fa784abd28f481"), "type" : "Car", "make" : "Honda", "model" : "Civic", "registrationNumber" : "CU57ABC", "colour" : "red" }
+{ "_id" : ObjectId("5d17d5ef55fa784abd28f482"), "type" : "Car", "make" : "Honda", "model" : "Civic", "registrationNumber" : "CU57ABC", "colour" : "red" }
 ```
 
 > You can make the documents returned easier to read by adding a call to `pretty()` on the end of your find method:
@@ -229,7 +229,7 @@ You may also want to create a separate variables in JavaScript that contain your
 The above query is using the short hand for the [`$eq` Operator](https://docs.mongodb.com/manual/reference/operator/query/eq/#op._S_eq), this can alternatively be written like the follow query:
 
 ```javascript
-> var query = { _id: { $eq: ObjectId("5d17d3d455fa784abd28f481") } };
+> var query = { _id: { $eq: ObjectId("5d17d5ef55fa784abd28f482") } };
 ```
 
 MongoDB has a vast number of query operators which allows you to filter documents in many different ways, the full list of the operators can be found on their [documentation](https://docs.mongodb.com/manual/reference/operator/query/).
@@ -272,7 +272,7 @@ Let's change the colour of our vehicle with the `_id` of `ObjectId("5d17d5ef55fa
 > var update = { $set: { 'colour': 'orange' } };
 >
 > db.vehicles.updateOne(query, update);
-{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 0 }
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 >
 > db.vehicles.find(query).pretty()
 {
