@@ -4,30 +4,28 @@ This tutorial is meant to be a beginners guide to using MongoDB.
 
 ## Get Started
 
-The MongoDB Community Edition is free and available for Windows, Linux, and macOS.
+The fastest way to connect to a MongoDB instance is to use Docker.
 
-### Installing MongoDB Community Edition
+### Installing Docker Desktop
 
-Follow the follow installation guides to get MongoDB installed locally:
+Follow the follow installation guides to get Docker Desktop installed locally:
 
-- [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
-- [macOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
-- [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+[Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ## MongoDB Shell
 
 ### Running the MongoDB Shell
 
-To connect to a database instance within MongoDB you can use the MongoDB shell. This is normally found in the `bin` directory of the mongodb install directory (`<mongodb installation dir>/bin`).
+To connect to a database instance within MongoDB you can use the MongoDB shell. We can execute this program via docker with the offical `mongo` docker image on [Docker Hub](https://hub.docker.com/_/mongo).
 
-Once inside the bin directory type `mongo` this is defaulted to connect to the local instance of the database running on your machine. Once connected you'll get some information regarding the server that you're connected to:
+We can run the MongoDB shell without connecting to a database just to play around, to do this we execute `mongosh` with the `--nodb` argument.
 
 ```bash
-C:\mongodb\bin>mongo
-MongoDB shell version v4.0.4
-connecting to: mongodb://127.0.0.1:27017
-Implicit session: session { "id" : UUID("a7df4f06-c81b-44b8-bcb3-1cada87e0bb1") }
-MongoDB server version: 4.0.4
+docker run -it mongo:latest mongosh --nodb
+
+Current Mongosh Log ID: 645381eb4b8b50a86c12f7f8
+Using Mongosh:          1.6.1
+>
 ```
 
 ### Playing with MongoDB Shell
@@ -79,6 +77,18 @@ FizzBuzz, 1, 2, Fizz, 4, Buzz
 Feel free to try out more JavaScript commands inside the MongoDB Shell.
 
 ## Database Interaction
+
+To do the next section we'll need to start up a local MongoDB instance, this again can be done via docker with the offical `mongo` image.
+
+```bash
+docker run -p 27017:27017 mongo:latest
+```
+
+Then we'll need to connect to it via the MongoDB shell, this time instead of passing in `--nodb` we can pass in a connection string which points to the docker host (your local machine).
+
+``` 
+docker run -it --network=host mongo:latest mongosh "mongodb://localhost/"
+```
 
 To interact with the database, the shell gives us a few global variable helpers. The main one we'll be using is `db`. This is how we'll interact with the current database we're connected to.
 
@@ -299,7 +309,8 @@ We'll need to drop out the current shell and create a new session to a database 
 To connect to the database run the following command but replace the `<username>` and `<password>` with the given details.
 
 ```bash
-mongo "mongodb+srv://cluster0-dxyc7.mongodb.net/parkrun-map" --username <username> --password <password>
+docker run -it mongo:latest mongosh "mongodb+srv://cluster0.zt6noj2.mongodb.net/" --username <username>
+Enter password: <password>
 ```
 
 Once connected run the following to see the structure of the parkrun data:
